@@ -3,7 +3,7 @@ package com.arnob.bank_app.data.repository
 import com.arnob.bank_app.data.db.dao.UserDao
 import com.arnob.bank_app.data.model.User
 
-class UserRepository(private val userDao: UserDao.UserDao) {
+class UserRepository(private val userDao: UserDao) {
 
     suspend fun registerUser(username: String, password: String, name: String): Result<Long> {
         return try {

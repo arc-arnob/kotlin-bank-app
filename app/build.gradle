@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     // I added
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    def room_version = "2.6.1"
+    def room_version = "2.5.2"
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
@@ -53,7 +53,7 @@ dependencies {
 
     // Optional - Kotlin Extensions and Coroutines support
     implementation "androidx.room:room-ktx:$room_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     // Default
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
