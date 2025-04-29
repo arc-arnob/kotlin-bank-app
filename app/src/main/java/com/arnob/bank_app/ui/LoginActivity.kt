@@ -22,15 +22,14 @@ class LoginActivity : AppCompatActivity() {
         preferenceHelper = PreferenceHelper(this)
 
         // Check if user is already logged in
-        if (preferenceHelper.isLoggedIn()) {
-//            navigateToDashboard()
-            finish()
-            return
-        }
+//        if (preferenceHelper.isLoggedIn()) {
+////            navigateToDashboard()
+////            finish()
+//            return
+//        }
 
         // Initialize ViewModel
-        viewModel = ViewModelProvider(this, ViewModelFactory(this))
-            .get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(this))[LoginViewModel::class.java]
 
         // Setup observers
         setupObservers()
@@ -38,23 +37,26 @@ class LoginActivity : AppCompatActivity() {
         // Setup click listeners
         setupClickListeners()
     }
-//    private fun navigateToDashboard() {
+    private fun navigateToDashboard() {
 //        val intent = Intent(this, DashboardActivity::class.java)
 //        startActivity(intent)
-//    }
+        println("Login Success")
+    }
 
     private fun setupClickListeners() {
+        // Login Button Binder
         binding.btnLogin.setOnClickListener {
             val username = binding.tilEmail.toString().trim()
             val password = binding.tilPassword.toString().trim()
-
             viewModel.login(username, password)
         }
+        // Register Account Binder
 
-//        binding.tvRegister.setOnClickListener {
-//            val intent = Intent(this, RegisterActivity::class.java)
-//            startActivity(intent)
-//        }
+
+        binding.tvRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupObservers() {
@@ -68,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 is LoginState.Success -> {
 //                    showLoading(false)
-//                    navigateToDashboard()
+                    navigateToDashboard()
                     finish()
                 }
                 is LoginState.Error -> {

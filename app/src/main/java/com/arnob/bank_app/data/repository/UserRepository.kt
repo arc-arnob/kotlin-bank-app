@@ -23,6 +23,7 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun loginUser(username: String, password: String): Result<User> {
         return try {
             val user = userDao.login(username, password)
+            println(user?.id)
             if (user != null) {
                 Result.success(user)
             } else {

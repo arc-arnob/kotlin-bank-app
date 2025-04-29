@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.arnob.bank_app.data.db.AppDatabase
 import com.arnob.bank_app.data.repository.UserRepository
 import com.arnob.bank_app.ui.LoginViewModel
+import com.arnob.bank_app.ui.RegisterViewModel
 import com.arnob.bank_app.util.PreferenceHelper
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
@@ -19,11 +20,12 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             return LoginViewModel(repository, preferenceHelper) as T
         }
 
-//        if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
-//            val database = AppDatabase.getDatabase(context)
-//            val repository = UserRepository(database.userDao())
-//            return RegisterViewModel(repository) as T
-//        }
+        if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
+            val database = AppDatabase.getDatabase(context)
+            val repository = UserRepository(database.userDao())
+            val preferenceHelper = PreferenceHelper(context)
+            return RegisterViewModel(repository, preferenceHelper) as T
+        }
 
         throw IllegalArgumentException("Unknown ViewModel class")
     }
