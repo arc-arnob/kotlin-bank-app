@@ -81,3 +81,104 @@ UI (Activity/Fragment) ↔  ViewModel ↔  Repository ↔  Room DAO ↔ Entity �
 - Show working code to recruiters to demonstrate Kotlin + Android proficiency
 
 ---
+
+# ✅ Kotlin Interview Preparation Checklist
+
+## 🟢 Kotlin Language Fundamentals
+
+- [x] Variables: `val`, `var`, immutability
+- [x] Nullable Types: `?`, `!!`, safe calls (`?.`)
+- [x] Elvis Operator: `?:`
+- [ ] Smart Casts
+- [ ] Functions & Lambdas
+  - [ ] Higher-order functions
+  - [ ] Inline functions
+- [x] Control Flow: `if`, `when`, `for`, `while`
+- [x] Data Classes
+- [ ] Object Declarations and Singletons
+- [ ] Companion Objects
+- [x] Interfaces vs Abstract Classes
+- [ ] Extension Functions
+- [ ] Sealed Classes vs Enums
+- [ ] Collections: `map`, `filter`, `reduce`, `flatMap`
+- [ ] Generics: `T`, `in`, `out`, reified
+- [ ] Scope Functions: `apply`, `also`, `run`, `let`, `with`
+
+---
+
+## 🟡 Coroutines & Concurrency
+
+- [ ] Coroutine Basics: `launch`, `async`, `delay`, `suspend`
+- [ ] Coroutine Scopes: `GlobalScope`, `viewModelScope`, etc.
+- [ ] Dispatchers: `Main`, `IO`, `Default`, `Unconfined`
+- [ ] Structured Concurrency
+- [ ] Exception Handling in Coroutines
+- [ ] Channels and Flows (optional)
+
+---
+
+## 🔵 Android & Jetpack (If Android Role)
+
+- [ ] MVVM Architecture
+- [ ] ViewModel + LiveData
+- [ ] StateFlow vs LiveData
+- [ ] Room DB
+  - [ ] Entity, DAO, Queries
+  - [ ] Migrations
+- [ ] ViewBinding vs DataBinding
+- [ ] Navigation Component
+- [ ] SharedPreferences
+- [ ] RecyclerView + Adapter
+- [ ] Jetpack Compose (optional)
+- [ ] WorkManager / Services
+- [ ] Dependency Injection (Manual)
+- [ ] Hilt / Dagger (optional)
+
+---
+
+## 🟣 Clean Code & Architecture
+
+- [x] SOLID Principles
+- [x] KISS, DRY, YAGNI
+- [ ] Single Source of Truth
+- [x] Repository Pattern
+- [x] Clean Architecture Layers (UI, Domain, Data)
+- [ ] Multi-module Project Structure
+
+---
+
+## 🔴 Testing & Debugging
+
+- [ ] JUnit Testing
+- [ ] Mocking with MockK / Mockito
+- [ ] UI Testing (Espresso / Compose Testing)
+- [ ] Debugging Coroutines
+- [ ] Logcat Filters and Crash Logs
+
+---
+
+## 🧠 System Design & Patterns (Mid-Sr Roles)
+
+- [ ] Designing scalable Android app
+- [ ] Offline-first Architecture
+- [ ] Modularization
+- [ ] Design Patterns: Singleton, Factory, Observer
+
+---
+
+## 🧪 Practice & Problem Solving
+
+- [ ] Solve 25+ LeetCode problems in Kotlin
+- [ ] Build 1–2 full Kotlin Android Projects
+- [ ] Build a feature using MVVM + Room + ViewModel
+- [ ] Submit a test assignment or case study
+
+---
+
+## 📘 Soft Skills & Interviews
+
+- [x] Explain MVVM and Clean Architecture
+- [ ] Answer Kotlin vs Java differences
+- [ ] Talk through code decisions and trade-offs
+- [ ] Ask clarifying questions during interviews
+
