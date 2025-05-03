@@ -13,7 +13,6 @@ class UserRepository(private val userDao: UserDao) {
             } else {
                 val user = User(username = username, password = password, name = name)
                 val userId = userDao.insertUser(user)
-                println(userId)
                 Result.success(userId)
             }
         } catch (e: Exception) {

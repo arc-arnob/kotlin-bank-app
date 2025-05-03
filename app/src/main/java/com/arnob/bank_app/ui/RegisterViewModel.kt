@@ -27,7 +27,6 @@ class RegisterViewModel(
 
             try {
                 val result = userRepository.registerUser(username, password, name)
-                println(result)
                 result.fold(
                     onSuccess = { user_id ->
                         // Save session

@@ -4,16 +4,19 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.arnob.bank_app.data.db.dao.BalanceDao
 import com.arnob.bank_app.data.db.dao.UserDao
+import com.arnob.bank_app.data.model.Balance
 import com.arnob.bank_app.data.model.User
 
 @Database(
-    entities = [User::class],
-    version = 1,
+    entities = [User::class, Balance::class],
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase(){
     abstract fun userDao(): UserDao
+    abstract fun balanceDao(): BalanceDao
 
     companion object {
         @Volatile
@@ -26,7 +29,7 @@ abstract class AppDatabase : RoomDatabase(){
                     AppDatabase::class.java,
                     "finance_app_database"
                 )
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration() // If you're still in dev and okay with wiping data on schema change:
                     .build()
                 INSTANCE = instance
                 instance
