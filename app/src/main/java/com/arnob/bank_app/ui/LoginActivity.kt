@@ -46,8 +46,8 @@ class LoginActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         // Login Button Binder
         binding.btnLogin.setOnClickListener {
-            val username = binding.tilEmail.toString().trim()
-            val password = binding.tilPassword.toString().trim()
+            val username = binding.etEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
             viewModel.login(username, password)
         }
         // Register Account Binder

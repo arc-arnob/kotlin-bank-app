@@ -29,9 +29,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btnRegister.setOnClickListener{
-            val username = binding.tilUsername.toString().trim()
-            val password = binding.tilPassword.toString().trim()
-            val name = binding.tilName.toString().trim()
+            val username = binding.etUsername.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+            val name = binding.etName.text.toString().trim()
 
             viewModel.register(username, password, name)
         }
