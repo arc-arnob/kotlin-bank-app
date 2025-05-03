@@ -25,7 +25,6 @@ class LoginViewModel(
 
             try {
                 val result = userRepository.loginUser(username, password)
-                println(result)
                 result.fold(
                     onSuccess = { user ->
                         // Save session

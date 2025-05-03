@@ -22,11 +22,9 @@ class LoginActivity : AppCompatActivity() {
         preferenceHelper = PreferenceHelper(this)
 
         // Check if user is already logged in
-//        if (preferenceHelper.isLoggedIn()) {
-////            navigateToDashboard()
-////            finish()
-//            return
-//        }
+        if (preferenceHelper.isLoggedIn()) {
+            navigateToDashboard()
+        }
 
         // Initialize ViewModel
         viewModel = ViewModelProvider(this, ViewModelFactory(this))[LoginViewModel::class.java]
@@ -38,9 +36,8 @@ class LoginActivity : AppCompatActivity() {
         setupClickListeners()
     }
     private fun navigateToDashboard() {
-//        val intent = Intent(this, DashboardActivity::class.java)
-//        startActivity(intent)
-        println("Login Success")
+        val intent = Intent(this, DashboardActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setupClickListeners() {
