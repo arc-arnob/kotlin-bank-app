@@ -37,7 +37,9 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun navigateToDashboard() {
         val intent = Intent(this, DashboardActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
+        finish()
     }
 
     private fun setupClickListeners() {
