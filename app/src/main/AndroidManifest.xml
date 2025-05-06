@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Bankapp"
         tools:targetApi="33">
         <activity
+            android:name=".ui.TransferActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.DashboardActivity"
             android:exported="false" />
         <activity

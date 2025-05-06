@@ -35,6 +35,11 @@ class DashboardActivity : AppCompatActivity() {
             preferenceHelper.clearSession()
             navigateToLogin()
         }
+
+        binding.sendAddMoney.setOnClickListener {
+            navigateToTransferMoney()
+        }
+
         binding.btnAddMoney.setOnClickListener{
             val amountText = binding.etAmount.text.toString()
             val amount = amountText.toDoubleOrNull()
@@ -48,6 +53,10 @@ class DashboardActivity : AppCompatActivity() {
     }
     private fun navigateToLogin(){
         val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+    private fun navigateToTransferMoney(){
+        val intent = Intent(this, TransferActivity::class.java)
         startActivity(intent)
     }
     private fun setupObservers() {
