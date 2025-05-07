@@ -5,18 +5,21 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.arnob.bank_app.data.db.dao.BalanceDao
+import com.arnob.bank_app.data.db.dao.TransactionDao
 import com.arnob.bank_app.data.db.dao.UserDao
 import com.arnob.bank_app.data.model.Balance
+import com.arnob.bank_app.data.model.Transaction
 import com.arnob.bank_app.data.model.User
 
 @Database(
-    entities = [User::class, Balance::class],
-    version = 2,
+    entities = [User::class, Balance::class, Transaction::class],
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase(){
     abstract fun userDao(): UserDao
     abstract fun balanceDao(): BalanceDao
+    abstract fun transactionDao(): TransactionDao
 
     companion object {
         @Volatile
