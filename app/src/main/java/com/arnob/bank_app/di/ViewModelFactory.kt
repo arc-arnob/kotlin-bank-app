@@ -32,13 +32,13 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 
         if (modelClass.isAssignableFrom(DashboardViewModel::class.java)) {
             val database = AppDatabase.getDatabase(context)
-            val repository = BalanceRepository(database.balanceDao(), database.userDao())
+            val repository = BalanceRepository(database.balanceDao(), database.userDao(), database.transactionDao())
             val preferenceHelper = PreferenceHelper(context)
             return DashboardViewModel(repository, preferenceHelper) as T
         }
         if (modelClass.isAssignableFrom(TransferViewModel::class.java)) {
             val database = AppDatabase.getDatabase(context)
-            val repository = BalanceRepository(database.balanceDao(), database.userDao())
+            val repository = BalanceRepository(database.balanceDao(), database.userDao(), database.transactionDao())
             val preferenceHelper = PreferenceHelper(context)
             return TransferViewModel(repository, preferenceHelper) as T
         }
