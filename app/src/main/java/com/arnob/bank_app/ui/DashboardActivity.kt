@@ -50,6 +50,9 @@ class DashboardActivity : AppCompatActivity() {
                 viewModel.addBalance(amount)
             }
         }
+        binding.viewLog.setOnClickListener{
+            navigateToTransactionLogs()
+        }
     }
     private fun navigateToLogin(){
         val intent = Intent(this, LoginActivity::class.java)
@@ -59,6 +62,10 @@ class DashboardActivity : AppCompatActivity() {
     }
     private fun navigateToTransferMoney(){
         val intent = Intent(this, TransferActivity::class.java)
+        startActivity(intent)
+    }
+    private fun navigateToTransactionLogs(){
+        val intent = Intent(this, TransactionActivity::class.java)
         startActivity(intent)
     }
     private fun setupObservers() {
