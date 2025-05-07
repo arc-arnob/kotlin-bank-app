@@ -1,10 +1,13 @@
 package com.arnob.bank_app.data.repository
 
 import com.arnob.bank_app.data.db.dao.BalanceDao
+import com.arnob.bank_app.data.db.dao.TransactionDao
 import com.arnob.bank_app.data.db.dao.UserDao
 import com.arnob.bank_app.data.model.Balance
+import com.arnob.bank_app.data.model.Transaction
+import com.arnob.bank_app.data.model.TransactionType
 
-class BalanceRepository(private val balanceDao: BalanceDao, private  val userDao: UserDao) {
+class BalanceRepository(private val balanceDao: BalanceDao, private  val userDao: UserDao, private  val transactionDao: TransactionDao) {
     // TODO: Change this to be extendable, UPI, Bank, Card etc etc..
     suspend fun addMoney(userId: Long, amount: Double): Result<Double>{
         return try {
@@ -13,10 +16,16 @@ class BalanceRepository(private val balanceDao: BalanceDao, private  val userDao
                 val newAmount = existingUserBalance.amount + amount
                 val updatedBalance = existingUserBalance.copy(amount = newAmount)
                 balanceDao.updateBalance(updatedBalance)
+                // TODO: DRY BROKEN
+                val tx = Transaction(userId = userId, type = TransactionType.ADD, amount = amount, targetUser = null)
+                transactionDao.insertTransaction(tx)
                 Result.success(newAmount)
             }else{
                 val newBalance = Balance(userId = userId, amount = amount)
                 balanceDao.insertBalance(newBalance)
+                // TODO: DRY BROKEN
+                val tx = Transaction(userId = userId, type = TransactionType.ADD, amount = amount, targetUser = null)
+                transactionDao.insertTransaction(tx)
                 Result.success(amount)
             }
         }catch (e: Exception){
@@ -50,6 +59,14 @@ class BalanceRepository(private val balanceDao: BalanceDao, private  val userDao
             } else {
                 balanceDao.updateBalance(receiverBalance.copy(amount = receiverBalance.amount + amount))
             }
+
+            // LOG TRANSACTION // TODO: Add Failure Handling.
+            // Sender Log
+            val txSender = Transaction(userId = fromUserId, type = TransactionType.TRANSFER, amount = amount, targetUser = receiver.id.toString())
+            transactionDao.insertTransaction(txSender)
+            // Receiver Log
+            val txReceiver = Transaction(userId = receiver.id, type = TransactionType.ADD, amount = amount, targetUser = fromUserId.toString())
+            transactionDao.insertTransaction(txReceiver)
 
             Result.success(Unit) // Unit Corresponds to Void in Java.
         } catch (e: Exception) {
