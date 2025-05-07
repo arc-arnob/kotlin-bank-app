@@ -18,12 +18,14 @@ class TransactionAdapter(private var items: List<Transaction>) :
         val tvTimestamp: TextView = view.findViewById(R.id.tvTimestamp)
     }
 
+    // Inflate Layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_transaction, parent, false)
         return TransactionViewHolder(view)
     }
 
+    // Bind Data to view
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val item = items[position]
         holder.tvType.text = item.type.name
